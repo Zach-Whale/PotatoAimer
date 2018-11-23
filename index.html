@@ -14,6 +14,8 @@
   {
 
     var streamerNames = new Array();
+    var onlineStreamers = new Array();
+    var offlineStreamer = new Array();
 
     $.get("pages/streamers.txt", function(data){
       streamerNames = data.split("\n");
@@ -30,14 +32,15 @@
         $.getJSON(twitchChannel).done(channel => {
           if(channel.status === 404)
           {
-            printData("#", 'closed', offlineLogo, streamerNames, channel.message, 'event_busy', 0);
+            //printData("#", 'closed', offlineLogo, streamerNames, channel.message, 'event_busy', 0);
             return;
           }
 
           $.getJSON(twitchStreams).done(stream => {
             if(!stream.stream)
             {
-              printDataUserOffline(channel.url, 'offile', channel.logo, channel.display_name, 'offile', 'event', 0);
+              printDataUserOffline('offline', channel, stream.stream);
+              return;
             }
 
             //printDataUserStreaming(channel.url, 'online', channel.logo, channel.display_name, channel.status, 'event_available', stream.stream.viewers, channel.status, stream.stream.game);
@@ -51,21 +54,28 @@
         {
           $('#update').append(
             `<div class="streamer">
-              <div class="streamer_name">${channelObject.display_name}</div>
-              <div class="streamer_logo"><a href=${channelObject.url}><img class="user_image" src=${channelObject.logo}></img></a></div>
-              <div class="streamer_views">Viewers: ${streamObject.viewers}</div>
-              <div class="streamer_game">${streamObject.game}</div>
-              <div class="streamer_title">${channelObject.status}</div>
-              <div class="streamer_description">!Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</div>
-              <div class="streamer_embed"><a href=${channelObject.url}><img src=${streamObject.preview.medium}></img></a></div>
+            <div class="streamer_name">${channelObject.display_name}</div>
+            <div class="streamer_logo"><a href=${channelObject.url}><img class="user_image" src=${channelObject.logo}></img></a></div>
+            <div class="streamer_views">Viewers: ${streamObject.viewers}</div>
+            <div class="streamer_game">${streamObject.game}</div>
+            <div class="streamer_title">${channelObject.status} !Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+            <div class="streamer_description">!Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</div>
+            <div class="streamer_embed"><a href=${channelObject.url}><img src=${streamObject.preview.medium}></img></a></div>
             </div>`
           );
 
-          if (userStatus === 'closed') {
-            $('#' + displayName.toLowerCase() + ' .logo').removeClass('circle');
-            $('#' + displayName.toLowerCase() + ' .channel-link').remove();
-          }
+        }
 
+        function printDataUserOffline(userStatus, channelObject, streamObject)
+        {
+          $('#update').append(
+            `<div class="streamer">
+            <div class="streamer_name_offline">${channelObject.display_name}</div>
+            <div class="streamer_logo_offline"><a href=${channelObject.url}><img class="user_image" src=${channelObject.logo}></img></a></div>
+            <div class="streamer_description_offline">!Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</div>
+            <div class="streamer_offline_message">${channelObject.display_name} is Offline!</div>
+            </div>`
+          );
         }
 
       });
@@ -77,7 +87,7 @@
 
   </script>
 
-<style>
+  <style>
   html
   {
     background-color: rgb(200 120 25);
@@ -93,6 +103,7 @@
     margin-top: 20px;
     background-color: white;
     border-radius: 10px;
+    grid-auto-rows: minmax(100px auto;)
   }
 
   .streamer_name
@@ -153,6 +164,7 @@
     grid-row: 1 / span 6;
     border-width: 1px;
     border-style: solid;
+    margin: auto;
   }
 
   #update
@@ -165,6 +177,38 @@
   {
     height: 75px;
     border-radius: 50%;
+  }
+
+  .streamer_name_offline
+  {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    font-size: 2em;
+
+    border-width: 1px;
+    border-style: solid;
+  }
+  .streamer_logo_offline
+  {
+    grid-column: 3 / span 2;
+    grid-row: 1 / span 3;
+
+    border-width: 1px;
+    border-style: solid;
+  }
+  .streamer_description_offline
+  {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    border-width: 1px;
+    border-style: solid;
+  }
+  .streamer_offline_message
+  {
+    grid-column: 1/ span 2;
+    grid-row: 3;
+    border-width: 1px;
+    border-style: solid;
   }
 </style>
 
