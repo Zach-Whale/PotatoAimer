@@ -2,79 +2,177 @@
 
 <head>
   <title>Potato Aimer Squad</title>
-  <style>
-    html
-    {
-      background-color: rgb(200 120 25);
-    }
-    body
-    {
-      padding: 0;
-      margin: 0;
-      border: 0;
-    }
-    #coming_soon_image
-    {
-        background-position: center;
-    }
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <link rel="icon" href="content/potato_color_2.png">
 
-    h2
-    {
+  <script>
 
-      font-family: "Courier New";
+  $(document).ready(function()
+  {
 
-    }
-    #center_content
-    {
-      background-position: center;
-      flex-grow: 2;
-      text-align: center;
-      background-color: rgb(260 160 50)
-      position: relative;
-      order: 2;
-      margin:auto;
-      color: black;
-    }
-    hr
-    {
-      width: 40%;
-    }
-    #left_content
-    {
-      background-color: black;
-      order: 1;
-      flex-grow: 1;
-    }
-    #right_content
-    {
-      background-color: black;
-      order: 3;
-      flex-grow: 1;
-    }
-    #flexlayout
-    {
-      display: flex;
-      height: 100%;
-    }
+    var streamerNames = new Array();
+
+    $.get("pages/streamers.txt", function(data){
+      streamerNames = data.split("\n");
 
 
-  </style>
+      streamerNames.map(streamerNames => {
+        const twitchChannel =  'https://api.twitch.tv/kraken/channels/' + streamerNames,
+        twitchStreams =  'https://api.twitch.tv/kraken/streams/' + streamerNames,
+        twitchUsers = 'https://api.twitch.tv/helix/users?login=' + streamerNames;
 
+        $.ajaxSetup({
+          headers:{"Client-ID": "eu8zhc3k49ubec2brcpc824bhetvrk"}
+        });
+        $.getJSON(twitchChannel).done(channel => {
+          if(channel.status === 404)
+          {
+            printData("#", 'closed', offlineLogo, streamerNames, channel.message, 'event_busy', 0);
+            return;
+          }
+
+          $.getJSON(twitchStreams).done(stream => {
+            if(!stream.stream)
+            {
+              printDataUserOffline(channel.url, 'offile', channel.logo, channel.display_name, 'offile', 'event', 0);
+            }
+
+            //printDataUserStreaming(channel.url, 'online', channel.logo, channel.display_name, channel.status, 'event_available', stream.stream.viewers, channel.status, stream.stream.game);
+            printDataUserStreaming('online', channel, stream.stream);
+          });
+
+        });
+
+
+        function printDataUserStreaming(userStatus, channelObject, streamObject)
+        {
+          $('#update').append(
+            `<div class="streamer">
+              <div class="streamer_name">${channelObject.display_name}</div>
+              <div class="streamer_logo"><a href=${channelObject.url}><img class="user_image" src=${channelObject.logo}></img></a></div>
+              <div class="streamer_views">Viewers: ${streamObject.viewers}</div>
+              <div class="streamer_game">${streamObject.game}</div>
+              <div class="streamer_title">${channelObject.status}</div>
+              <div class="streamer_description">!Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</div>
+              <div class="streamer_embed"><a href=${channelObject.url}><img src=${streamObject.preview.medium}></img></a></div>
+            </div>`
+          );
+
+          if (userStatus === 'closed') {
+            $('#' + displayName.toLowerCase() + ' .logo').removeClass('circle');
+            $('#' + displayName.toLowerCase() + ' .channel-link').remove();
+          }
+
+        }
+
+      });
+
+
+
+    });
+  });
+
+  </script>
+
+<style>
+  html
+  {
+    background-color: rgb(200 120 25);
+  }
+  .streamer
+  {
+    max-width: 900px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 1px;
+    border-style: solid;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  .streamer_name
+  {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    font-size: 2em;
+    border-width: 1px;
+    border-style: solid;
+    /* margin: 10px 10px auto 10px; */
+  }
+
+  .streamer_logo
+  {
+    grid-column: 4 / span 2;
+    grid-row: 1 / span 3;
+    border-radius: 50%;
+    border-style: solid;
+    margin: auto;
+  }
+  .streamer_title
+  {
+    grid-column: 1 / span 3;
+    grid-row: 3 / span 2;
+    border-width: 1px;
+    border-style: solid;
+    /* max-width: 400px;
+    margin: 10px; */
+  }
+  .streamer_views
+  {
+    grid-column: 1 / span 1;
+    grid-row: 2;
+    border-width: 1px;
+    border-style: solid;
+    /* margin: 10px auto 0px auto; */
+  }
+
+  .streamer_game
+  {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+    border-width: 1px;
+    border-style: solid;
+    /* margin: auto; */
+  }
+  .streamer_description
+  {
+    grid-column: 1 / span 5;
+    grid-row: 5 / span 2;
+    border-width: 1px;
+    border-style: solid;
+    /* margin: 10px; */
+  }
+  .streamer_embed
+  {
+    grid-column: 6 / span 4;
+    grid-row: 1 / span 6;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  #update
+  {
+    display:grid;
+    grid-template-columns: 1;
+  }
+
+  .user_image
+  {
+    height: 75px;
+    border-radius: 50%;
+  }
+</style>
 
 
 </head>
 
 <body>
-  <div id="flexlayout">
-  <div id="left_content"></div>
-  <div id="center_content">
-    <a href="https://discord.gg/v6kXwFe">
-      <img id="coming_soon_image" src="content/potato_color_2.png" title="Come join us at the Potato Aimer Squad Discord!">
-    </a>
-    <hr>
-    <h1>Community Website Coming Soon</h1>
-  </div>
-  <div id="right_content"></div>
+  <div id="update">
   </div>
 </body>
 

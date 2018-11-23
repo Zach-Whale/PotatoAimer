@@ -1,0 +1,51 @@
+html
+{
+  background-color: rgb(200 120 25);
+}
+body
+{
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+#coming_soon_image
+{
+  background-position: center;
+}
+
+h2
+{
+  font-family: "Courier New";
+}
+#center_content
+{
+  background-position: center;
+  flex-grow: 2;
+  text-align: center;
+  background-color: rgb(260 160 50)
+  position: relative;
+  order: 2;
+  margin:auto;
+  color: black;
+}
+hr
+{
+  width: 40%;
+}
+#left_content
+{
+  background-color: black;
+  order: 1;
+  flex-grow: 1;
+}
+#right_content
+{
+  background-color: black;
+  order: 3;
+  flex-grow: 1;
+}
+#flexlayout
+{
+  display: flex;
+  height: 100%;
+}
