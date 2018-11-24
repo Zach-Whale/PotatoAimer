@@ -219,7 +219,8 @@ function printDataUserOffline(nonActiveStreamer)
     var options = {
       channel: onlineStreamer[i].channelData.display_name,
       width: 400,
-      height: 300
+      height: 300,
+      autoplay: false
     };
     var player = new Twitch.Player(onlineStreamer[i].channelData.display_name+"embedID", options);
     player.pause();
