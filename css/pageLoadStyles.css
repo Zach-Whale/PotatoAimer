@@ -1,0 +1,146 @@
+
+html
+{
+  background-color: rgb(200 120 25);
+}
+.streamer
+{
+  max-width: 900px;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  grid-auto-rows: minmax(100px auto;);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.streamer_offline
+{
+  max-width: 900px;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.streamer_name
+{
+  grid-column: 1 / span 3;
+  grid-row: 1;
+  font-size: 2em;
+  border-width: 1px;
+  border-style: solid;
+  /* margin: 10px 10px auto 10px; */
+}
+
+.streamer_logo
+{
+  grid-column: 4 / span 2;
+  grid-row: 1 / span 3;
+  border-radius: 50%;
+  border-style: solid;
+  margin: auto;
+}
+.streamer_title
+{
+  grid-column: 1 / span 3;
+  grid-row: 3 / span 2;
+  border-width: 1px;
+  border-style: solid;
+  /* max-width: 400px;
+  margin: 10px; */
+}
+.streamer_views
+{
+  grid-column: 1 / span 1;
+  grid-row: 2;
+  border-width: 1px;
+  border-style: solid;
+  /* margin: 10px auto 0px auto; */
+}
+
+.streamer_game
+{
+  grid-column: 2 / span 2;
+  grid-row: 2;
+  border-width: 1px;
+  border-style: solid;
+  /* margin: auto; */
+}
+.streamer_description
+{
+  grid-column: 1 / span 5;
+  grid-row: 5 / span 2;
+  border-width: 1px;
+  border-style: solid;
+  /* margin: 10px; */
+}
+.streamer_embed
+{
+  grid-column: 6 / span 4;
+  grid-row: 1 / span 6;
+  border-width: 1px;
+  border-style: solid;
+  margin: auto;
+}
+
+#update
+{
+  display:grid;
+  grid-template-columns: 1;
+}
+
+.user_image
+{
+  height: 75px;
+  border-radius: 50%;
+}
+
+.streamer_name_offline
+{
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  font-size: 2em;
+
+  border-width: 1px;
+  border-style: solid;
+}
+.streamer_logo_offline
+{
+  grid-column: 3 / span 2;
+  grid-row: 1 / span 3;
+
+  border-width: 1px;
+  border-style: solid;
+}
+.streamer_description_offline
+{
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  border-width: 1px;
+  border-style: solid;
+}
+.streamer_offline_message
+{
+  grid-column: 1/ span 2;
+  grid-row: 3;
+  border-width: 1px;
+  border-style: solid;
+}
+hr
+{
+  width: 70%;
+}
+#offlineTitle
+{
+  margin-left: auto;
+  margin-right: auto;
+}
