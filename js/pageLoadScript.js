@@ -67,25 +67,71 @@ function getStreamerStreams(data, namesData, tsl, tul)
 });
 }
 
-function getStreamerUser(data, namesData, cd, tul)
+function getStreamerUser(incomingData, namesData, cd, tul)
 {
       var streamerNames = namesData;
       var channelData = cd;
       var twitchUserLink = tul;
+      var streamData = incomingData;
 
-      if(!data.stream)
-      {
-        var newStreamerObjectOffline = channelData;
-        offlineStreamer.push(newStreamerObjectOffline);
-        printDataUserOffline(newStreamerObjectOffline);
-        return;
-      }
-      var activeStreamer = {
+      $.ajaxSetup({headers:{"Client-ID": "eu8zhc3k49ubec2brcpc824bhetvrk"}});
+
+      $.ajax({
+        type: "GET",
+        url: twitchUserLink,
+        success: function(data)
+        {
+          //console.log(data);
+
+          //drawOnlineStreamers();
+          //drawOfflineStreamers();
+
+          if(!streamData.stream)
+          {
+
+            pushOfflineStreamer(data, streamerNames, channelData);
+          }else {
+            pushOnlineStreamer(data, streamData, streamerNames, channelData);
+          }
+
+        },
+        error: function(jqXHR, textStatus, error){console.log(error);}
+
+    });
+
+
+}
+
+function pushOnlineStreamer(data, sD, sN, cD)
+{
+
+  var streamerNames = sN;
+  var channelData = cD;
+  var streamData = sD;
+  var userData = data;
+
+
+  var activeStreamer = {
+  channelData: channelData,
+  streamData: streamData.stream,
+  userData: userData
+  };
+  onlineStreamer.push(activeStreamer);
+}
+
+function pushOfflineStreamer(data, sN, cD)
+{
+  var streamerNames = sN;
+  var channelData = cD;
+  var userData = data;
+
+    var nonActiveStreamer = {
       channelData: channelData,
-      streamData: data.stream
+      userData: userData
       };
-      onlineStreamer.push(activeStreamer);
-      printDataUserOnline(activeStreamer);
+    offlineStreamer.push(nonActiveStreamer);
+    //printDataUserOffline(nonActiveStreamer);
+
 }
 
 
@@ -95,32 +141,80 @@ function printDataUserOnline(activeStreamer)
   //console.log(channelObject);
   var streamObject = activeStreamer.streamData;
   //console.log(streamObject);
+  var userObject = activeStreamer.userData;
+  var userBio = "";
+
+  if(userObject.bio === null)
+  {
+    userBio = channelObject.display_name + " has no bio. Check out their stream to find out more!";
+  }else{
+    userBio = userObject.bio;
+  }
 
   $('#streamerOnline').append(
     `<div class="streamer">
-    <div class="streamer_name">${channelObject.display_name}</div>
+    <div class="streamer_name"><b>${channelObject.display_name}</b></div>
     <div class="streamer_logo"><a href=${channelObject.url} target="_blank"><img class="user_image" src=${channelObject.logo}></img></a></div>
-    <div class="streamer_views">Viewers: ${streamObject.viewers}</div>
+    <div class="streamer_views"><img src="content/viewers.png" id="viewers"> ${streamObject.viewers}</img></div>
     <div class="streamer_game">${streamObject.game}</div>
     <div class="streamer_title">${channelObject.status}.</div>
-    <div class="streamer_description">!Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</div>
+    <div class="streamer_description">${userBio}</div>
     <div class="streamer_embed"><a href=${channelObject.url} target="_blank"><img src=${streamObject.preview.medium}></img></a></div>
     </div>`
   );
 
 }
 
-function printDataUserOffline(co)
+function printDataUserOffline(nonActiveStreamer)
 {
+  var channelObject = nonActiveStreamer.channelData;
+  var userObject = nonActiveStreamer.userData;
+
+  var userBio = "";
+
+  if(userObject.bio === null)
+  {
+    userBio = channelObject.display_name + " has no bio. Check out their stream to find out more!";
+  }else{
+    userBio = userObject.bio;
+  }
 
   $('#streamerOffline').append(
     `<div class="streamer_offline">
-    <div class="streamer_name_offline">${co.display_name}</div>
-    <div class="streamer_logo_offline"><a href=${co.url} target="_blank"><img class="user_image" src=${co.logo}></img></a></div>
-    <div class="streamer_description_offline">!Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</div>
-    <div class="streamer_offline_message">${co.display_name} is Offline!</div>
+    <div class="streamer_name_offline">${channelObject.display_name}</div>
+    <div class="streamer_logo_offline"><a href=${channelObject.url} target="_blank"><img class="user_image" src=${channelObject.logo}></img></a></div>
+    <div class="streamer_description_offline">${userBio}</div>
+    <div class="streamer_offline_message">${channelObject.display_name} is Offline!</div>
     </div>`
   );
 }
 
   $(document).ready(loopStreamers);
+  $(document).ajaxStop(function()
+{
+
+  onlineStreamer.sort(function(a, b)
+{
+  if(a.streamData.viewers < b.streamData.viewers)
+  {
+    return 1;
+  }
+  if(a.streamData.viewers > b.streamData.viewers)
+  {
+    return -1;
+  }
+  return 0;
+});
+
+  for(i in onlineStreamer)
+  {
+    printDataUserOnline(onlineStreamer[i]);
+    //console.log(onlineStreamer[i].streamData.viewers)
+  }
+
+  for(i in offlineStreamer)
+  {
+    printDataUserOffline(offlineStreamer[i]);
+  }
+
+})

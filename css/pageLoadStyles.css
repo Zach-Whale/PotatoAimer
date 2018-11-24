@@ -9,13 +9,11 @@ html
   display: grid;
   margin-left: auto;
   margin-right: auto;
-  border-width: 1px;
-  border-style: solid;
   margin-top: 20px;
   background-color: white;
   border-radius: 10px;
-  grid-auto-rows: minmax(100px auto;);
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr ;
 }
 
 .streamer_offline
@@ -24,11 +22,11 @@ html
   display: grid;
   margin-left: auto;
   margin-right: auto;
-  border-width: 1px;
-  border-style: solid;
   margin-top: 20px;
   background-color: white;
   border-radius: 10px;
+  grid-template-rows: 2fr, 1fr, 1fr;
+  grid-template-columns: 4fr 1fr;
 }
 
 .streamer_name
@@ -36,9 +34,9 @@ html
   grid-column: 1 / span 3;
   grid-row: 1;
   font-size: 2em;
-  border-width: 1px;
-  border-style: solid;
-  /* margin: 10px 10px auto 10px; */
+  /* border-width: 1px;
+  border-style: solid; */
+  margin: 10px 10px auto 10px;
 }
 
 .streamer_logo
@@ -52,43 +50,44 @@ html
 .streamer_title
 {
   grid-column: 1 / span 3;
-  grid-row: 3 / span 2;
+  grid-row: 3
   border-width: 1px;
-  border-style: solid;
-  /* max-width: 400px;
-  margin: 10px; */
+  /* border-style: solid; */
+  /* max-width: 400px;*/
+  margin: auto auto auto 15px;
 }
 .streamer_views
 {
   grid-column: 1 / span 1;
   grid-row: 2;
-  border-width: 1px;
-  border-style: solid;
-  /* margin: 10px auto 0px auto; */
+  /* border-width: 1px; */
+  /* border-style: solid; */
+  margin: 10px auto auto auto;
 }
 
 .streamer_game
 {
   grid-column: 2 / span 2;
   grid-row: 2;
-  border-width: 1px;
-  border-style: solid;
-  /* margin: auto; */
+  /* border-width: 1px;
+  border-style: solid; */
+  margin: auto;
+  text-align: center;
 }
 .streamer_description
 {
   grid-column: 1 / span 5;
-  grid-row: 5 / span 2;
+  grid-row: 5
   border-width: 1px;
-  border-style: solid;
-  /* margin: 10px; */
+  /* border-style: solid; */
+  margin: 10px;
 }
 .streamer_embed
 {
-  grid-column: 6 / span 4;
+  grid-column: 6 / span 1;
   grid-row: 1 / span 6;
-  border-width: 1px;
-  border-style: solid;
+  /* border-width: 1px; */
+  /* border-style: solid; */
   margin: auto;
 }
 
@@ -100,7 +99,7 @@ html
 
 .user_image
 {
-  height: 75px;
+  height: 100px;
   border-radius: 50%;
 }
 
@@ -141,6 +140,10 @@ hr
 }
 #offlineTitle
 {
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
+  font-size: 3em;
+}
+#viewers
+{
+  max-height: 20px;
 }
