@@ -16,19 +16,6 @@ html
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr ;
 }
 
-.streamer_offline
-{
-  max-width: 900px;
-  display: grid;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  background-color: white;
-  border-radius: 10px;
-  grid-template-rows: 2fr, 1fr, 1fr;
-  grid-template-columns: 4fr 1fr;
-}
-
 .streamer_name
 {
   grid-column: 1 / span 3;
@@ -47,6 +34,7 @@ html
   border-style: solid;
   margin: auto;
 }
+
 .streamer_title
 {
   grid-column: 1 / span 3;
@@ -82,6 +70,7 @@ html
   /* border-style: solid; */
   margin: 10px;
 }
+
 .streamer_embed
 {
   grid-column: 6 / span 1;
@@ -103,37 +92,7 @@ html
   border-radius: 50%;
 }
 
-.streamer_name_offline
-{
-  grid-column: 1 / span 2;
-  grid-row: 1;
-  font-size: 2em;
 
-  border-width: 1px;
-  border-style: solid;
-}
-.streamer_logo_offline
-{
-  grid-column: 3 / span 2;
-  grid-row: 1 / span 3;
-
-  border-width: 1px;
-  border-style: solid;
-}
-.streamer_description_offline
-{
-  grid-column: 1 / span 2;
-  grid-row: 2;
-  border-width: 1px;
-  border-style: solid;
-}
-.streamer_offline_message
-{
-  grid-column: 1/ span 2;
-  grid-row: 3;
-  border-width: 1px;
-  border-style: solid;
-}
 hr
 {
   width: 70%;
@@ -146,4 +105,55 @@ hr
 #viewers
 {
   max-height: 20px;
+}
+
+.streamer_offline
+{
+  max-width: 500px;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  grid-template-rows: 2fr, 1fr, 1fr;
+  grid-template-columns: 4fr 1fr;
+}
+.streamer_offline_message
+{
+  grid-column: 1/ span 2;
+  grid-row: 3;
+  /* border-width: 1px;
+  border-style: solid; */
+}
+.streamer_description_offline
+{
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  margin: 10px;
+  /* border-width: 1px;
+  border-style: solid; */
+}
+.streamer_logo_offline
+{
+  grid-column: 3 ;
+  grid-row: 1 / span 3;
+  margin: auto 10px auto 10px;
+  /* border-width: 1px;
+  border-style: solid; */
+}
+.streamer_name_offline
+{
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  font-size: 2em;
+  margin: 10px 10px auto 10px;
+
+  /* border-width: 1px;
+  border-style: solid; */
+}
+
+.streamer_offline_message
+{
+    margin: auto;
 }

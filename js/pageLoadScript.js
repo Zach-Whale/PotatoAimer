@@ -151,6 +151,8 @@ function printDataUserOnline(activeStreamer)
     userBio = userObject.bio;
   }
 
+
+
   $('#streamerOnline').append(
     `<div class="streamer">
     <div class="streamer_name"><b>${channelObject.display_name}</b></div>
@@ -159,9 +161,13 @@ function printDataUserOnline(activeStreamer)
     <div class="streamer_game">${streamObject.game}</div>
     <div class="streamer_title">${channelObject.status}.</div>
     <div class="streamer_description">${userBio}</div>
-    <div class="streamer_embed"><a href=${channelObject.url} target="_blank"><img src=${streamObject.preview.medium}></img></a></div>
+    <div class="streamer_embed"><div id="${channelObject.display_name}embedID"></div>
     </div>`
+    //<a href=${channelObject.url} target="_blank"><img src=${streamObject.preview.medium}></img></a></div>
   );
+
+
+
 
 }
 
@@ -181,7 +187,7 @@ function printDataUserOffline(nonActiveStreamer)
 
   $('#streamerOffline').append(
     `<div class="streamer_offline">
-    <div class="streamer_name_offline">${channelObject.display_name}</div>
+    <div class="streamer_name_offline"><b>${channelObject.display_name}</b></div>
     <div class="streamer_logo_offline"><a href=${channelObject.url} target="_blank"><img class="user_image" src=${channelObject.logo}></img></a></div>
     <div class="streamer_description_offline">${userBio}</div>
     <div class="streamer_offline_message">${channelObject.display_name} is Offline!</div>
@@ -209,6 +215,15 @@ function printDataUserOffline(nonActiveStreamer)
   for(i in onlineStreamer)
   {
     printDataUserOnline(onlineStreamer[i]);
+
+    var options = {
+      channel: onlineStreamer[i].channelData.display_name,
+      width: 400,
+      height: 300
+    };
+    var player = new Twitch.Player(onlineStreamer[i].channelData.display_name+"embedID", options);
+    player.pause();
+    player.setVolume(0);
     //console.log(onlineStreamer[i].streamData.viewers)
   }
 
