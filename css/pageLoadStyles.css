@@ -16,6 +16,12 @@ html
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr ;
 }
 
+#onlineStreamerContainer
+{
+  display:grid;
+  grid-template-columns: 1fr 4fr 1fr
+}
+
 .streamer_name
 {
   grid-column: 1 / span 3;
