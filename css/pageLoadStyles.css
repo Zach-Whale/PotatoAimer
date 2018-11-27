@@ -152,6 +152,7 @@ hr
   border-radius: 10px;
   grid-template-rows: 2fr, 1fr, 1fr;
   grid-template-columns: 4fr 1fr;
+  padding:10px;
 }
 #offlineStreamerContainer
 {
