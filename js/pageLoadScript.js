@@ -198,6 +198,18 @@ function printDataUserOffline(nonActiveStreamer)
   $(document).ready(loopStreamers);
   $(document).ajaxStop(function()
 {
+  offlineStreamer.sort(function(a, b)
+{
+  if(a.channelData.display_name < b.channelData.display_name)
+  {
+    return -1;
+  }
+  if(a.channelData.display_name > b.channelData.display_name)
+  {
+    return 1;
+  }
+  return 0;
+});
 
   onlineStreamer.sort(function(a, b)
 {

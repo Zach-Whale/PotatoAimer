@@ -1,0 +1,18 @@
+Auto Refresh
+Options Menu
+Refresh Toggle
+Check if stream is playing to prevent refresh
+Cookies
+Automated User Addition
+Automated User Removal
+Automated User Editing
+Raining Potatoes Easter Egg
+Organize Offline Streamers Alphabetically
+Founders Tab
+Filter Offline Streamers
+Community bio
+Links to social media(Twitter)
+Links to Social Media(Email)
+Links to Social Media(Discord)
+website Header
+Website Footer

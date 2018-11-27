@@ -2,6 +2,14 @@
 html
 {
   background-color: rgb(200 120 25);
+  font-family: Helvetica;
+  margin: 0;
+  padding: 0;
+}
+body
+{
+  margin: 0;
+  padding: 0;
 }
 .streamer
 {
@@ -14,6 +22,7 @@ html
   border-radius: 10px;
   grid-template-rows: 1fr 1fr 1fr 2fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr ;
+  padding: 10px;
 }
 
 #onlineStreamerContainer
@@ -56,7 +65,7 @@ html
   grid-row: 2;
   /* border-width: 1px; */
   /* border-style: solid; */
-  margin: 10px auto auto auto;
+  margin: auto auto auto auto;
 }
 
 .streamer_game
@@ -74,7 +83,8 @@ html
   grid-row: 5
   border-width: 1px;
   /* border-style: solid; */
-  margin: 10px;
+  margin: 10px 30px 10px 10px;
+  text-align:center;
 }
 
 .streamer_embed
@@ -103,7 +113,25 @@ hr
 {
   width: 70%;
 }
-#offlineTitle
+#header
+{
+  margin: 0px;
+  padding: 0px;
+  display:grid;
+  grid-template-columns: 1fr 5fr;
+    background-color: black;
+}
+#banner
+{
+}
+
+#pageHeader
+{
+  font-size: 6em;
+  color:white;
+  margin: auto;
+}
+#streamerHeader
 {
   text-align: center;
   font-size: 3em;
