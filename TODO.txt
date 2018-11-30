@@ -1,15 +1,15 @@
-Auto Refresh
-Options Menu
-Refresh Toggle
-Check if stream is playing to prevent refresh
-Cookies
+Auto Refresh[COMPLETE]
+Options Menu[COMPLETE]
+Refresh Toggle[COMPLETE]
+Check if stream is playing to prevent refresh[COMPLETE]
+Cookies[COMPLETE]
 Automated User Addition
 Automated User Removal
 Automated User Editing
 Raining Potatoes Easter Egg
-Organize Offline Streamers Alphabetically
+Organize Offline Streamers Alphabetically[COMPLETE]
 Founders Tab
-Filter Offline Streamers
+Filter Offline Streamers[COMPLETE]
 Community bio
 Links to social media(Twitter)
 Links to Social Media(Email)
