@@ -230,7 +230,6 @@ function searchBarUpdate()
       if(!onlineStreamerTwitchEmbed[i].isPaused())
       {
         twitchStreamPlaying = true;
-        alert(twitchStreamPlaying);
       }
     }
 
