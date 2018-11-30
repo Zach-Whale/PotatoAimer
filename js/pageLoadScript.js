@@ -2,6 +2,7 @@
 
 var onlineStreamer = new Array();
 var offlineStreamer = new Array();
+var onlineStreamerTwitchEmbed = new Array();
 
 function loopStreamers()
 {
@@ -222,7 +223,18 @@ function searchBarUpdate()
 
   function refresh()
   {
-    if($("#refreshToggle").is(":checked"))
+    var twitchStreamPlaying = false;
+
+    for(i in onlineStreamerTwitchEmbed)
+    {
+      if(!onlineStreamerTwitchEmbed[i].isPaused())
+      {
+        twitchStreamPlaying = true;
+        alert(twitchStreamPlaying);
+      }
+    }
+
+    if($("#refreshToggle").is(":checked") && twitchStreamPlaying == false)
     {
       window.location.reload(true);
     }
@@ -302,6 +314,7 @@ if(onlineStreamer.length == 0)
     var player = new Twitch.Player(onlineStreamer[i].channelData.display_name+"embedID", options);
     player.pause();
     player.setVolume(0);
+    onlineStreamerTwitchEmbed.push(player);
     //console.log(onlineStreamer[i].streamData.viewers)
   }
 }
