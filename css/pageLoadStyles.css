@@ -11,7 +11,7 @@ body
   margin: 0;
   padding: 0;
 }
-.streamer
+.streamerCard
 {
   max-width: 900px;
   display: grid;
@@ -24,7 +24,10 @@ body
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr ;
   padding: 10px;
 }
-
+#navigationBar
+{
+  height: 60px;
+}
 #onlineStreamerContainer
 {
   display:grid;
@@ -119,7 +122,7 @@ hr
   padding: 0px;
   display:grid;
   grid-template-columns: 1fr 5fr;
-    background-color: black;
+    background-color: #333;
 }
 #banner
 {
@@ -128,26 +131,61 @@ hr
 #pageHeader
 {
   font-size: 6em;
-  color:white;
+  color: rgb(200, 120, 25);
+  text-shadow: 3px 3px black;
   margin: auto;
 }
-#streamerHeader
+.streamerHeader
 {
+  margin-top: 15px;
   text-align: center;
   font-size: 3em;
+  text-shadow: 1px 1px white;
 }
 #viewers
 {
   max-height: 20px;
 }
 
-.streamer_offline
+#search
+{
+  margin: auto;
+
+}
+
+#searchBar
+{
+  margin: auto;
+  text-align: center;
+}
+
+#offlineStreamerSearch
+{
+  width: 20%;
+  margin: auto;
+}
+
+#offlineStreamerSearch:focus
+{
+  border: 3px solid black;
+}
+
+#footer
+{
+  background-color: #333;
+  margin-top: 20px;
+  height: 25%;
+}
+
+.streamerCardOffline
 {
   width: 500px;
   display: grid;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   background-color: white;
   border-radius: 10px;
   grid-template-rows: 2fr, 1fr, 1fr;
@@ -177,6 +215,7 @@ hr
   grid-column: 1 / span 2;
   grid-row: 2;
   margin: 10px;
+  word-wrap: break-word;
   /* border-width: 1px;
   border-style: solid; */
 }

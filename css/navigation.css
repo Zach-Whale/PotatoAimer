@@ -1,0 +1,114 @@
+#navigationBar
+{
+  visibility: hidden;
+}
+#navigationBar ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+#navigationBar li
+{
+  float: left;
+  border-right: 1px solid #bbb;
+}
+#navigationBar li:last-child
+{
+  float: right;
+}
+
+#navigationBar li a
+{
+  display: block;
+  width: 60px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#navigationBar li a:hover
+{
+  background-color: #111;
+}
+
+#optionsPane
+{
+  height: 40px;
+  background-color: #333;
+
+  padding-left:8px
+}
+#optionsButton
+{
+  font-size:30px;
+  cursor:pointer;
+  width:auto;
+}
+
+.overlay
+{
+  height:100%;
+  width:0;
+  position:fixed;
+  z-index:1;
+  top:0;
+  left:0;
+  background-color: white;
+  overflow-x: hidden;
+  transition:.5s;
+}
+
+.overlayContent
+{
+  display:grid;
+  grid-template-columns: .5fr 2fr 1fr .5fr;
+}
+
+.optionMenuTitle
+{
+  grid-column: 2;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
+.optionMenuSetting
+{
+  grid-column:3;
+}
+
+#adminConsole:hover
+{
+  background-color:#EEE;
+}
+
+#closeOverlayButton
+{
+  font-size:50px;
+  cursor:pointer;
+  grid-column: 4;
+}
+#optionsButton
+{
+  color:white;
+
+  border: 1px white;
+  border-style: solid;
+  margin: auto;
+}
+
+#refreshOptionToggle
+{
+  font-size: 20px;
+  margin: auto;
+}
+
+#refreshoptionToggle input[type="checkbox"]
+{
+  width:15px;
+  height: 15px;
+}
