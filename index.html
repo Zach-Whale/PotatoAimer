@@ -1,3 +1,4 @@
+<meta http-equiv="Cache-control" content="no-cache">
 <html>
 
 <head>
@@ -8,10 +9,9 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
   <link rel="icon" href="content/potato_color_2.png"/>
-  <link rel="stylesheet" href="css/pageLoadStyles.css"/>
+  <link rel="stylesheet" href="css/index.css"/>
   <link rel="stylesheet" href="css/navigation.css"/>
   <script src="js/pageLoadScript.js"></script>
-    <script src="js/runtime.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
   <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
 
@@ -27,7 +27,8 @@
       <div id="closeOverlayButton">&times;</div>
       <div id="refreshOptionTitle" class="optionMenuTitle">Refresh Page</div>
       <div id="refreshOptionToggle" class="optionMenuSetting"><input type="checkbox" id="refreshToggle"></div>
-      <div id="adminConsole" class="optionMenuTitle">Admin Console</div>
+      <div id="multiLinkBox" class="optionMenuSpan"><a id="multiStreamLinkURL" target="_blank" href="">Multi Link</a></div>
+      <div id="adminConsole" onclick="location.href='pages/admin.html';" class="optionMenuTitle">Admin Console</div>
     </div>
   </div>
 
@@ -40,14 +41,26 @@
     <div id="pageHeader">Potato Aimers Squad</div>
 
   </div>
-
-  <div id="navigationBar">
+  <div id="navigationBarContainer">
+  <div id="navigationBarLeft"></div>
+  <div id="navigationBarCenter">
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="pages/news.html">Founders</a></li>
-      <li><a href="pages/contact.html">Contact</a></li>
+      <!-- <li><a href="pages/news.html">Founders</a></li>
+      <li><a href="pages/contact.html">Contact</a></li> -->
       <li><a href="pages/about.html">About</a></li>
     </ul>
+  </div>
+  <div id="navigationBarRight"></div>
+</div>
+  <div id="specialAnnouncementHeader" class="streamerHeader"></div>
+
+    <div id="specialAnnouncementContainer">
+
+      <div id="specialAnnouncementLeft"></div>
+      <div id="specialAnnouncementCenter"></div>
+      <div id="specialAnnouncementRight"></div>
+
   </div>
 
   <div class="streamerHeader" id="onlineStreamerHeader"></div>

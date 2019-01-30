@@ -1,30 +1,49 @@
 
-html
-{
-  background-color: rgb(200 120 25);
-  font-family: Helvetica;
-  margin: 0;
-  padding: 0;
-}
-body
-{
-  margin: 0;
-  padding: 0;
-}
-
-
-#navigationBar
-{
-  height: 60px;
-}
 #onlineStreamerContainer
 {
   display:grid;
   grid-template-columns: 1fr 4fr 1fr
 }
 
-@media screen and (min-width: 300px)
+@media screen and (max-width: 1249px)
 {
+
+  .speacialCard
+  {
+    max-width: 900px;
+    min-width: 500px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+ #specialAnnouncementContainer
+  {
+    display:grid;
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+
+  .specialDescription
+  {
+    display:grid;
+    grid-column: 1 /span 2;
+    margin: 10px 10px auto 10px;
+    text-align: center;
+  }
+
+  .specialLinkName
+  {
+    display:grid;
+    grid-column: 1 / span 2;;
+    margin: auto;
+  }
+
+
   .streamerCard
   {
     max-width: 900px;
@@ -36,6 +55,7 @@ body
     background-color: white;
     border-radius: 10px;
     grid-template-rows: 1fr 1fr 1fr 1fr 4fr;
+    //use 1 1 2 2 4 for mobile
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 10px;
   }
@@ -45,15 +65,13 @@ body
     grid-column: 1 / span 3;
     grid-row: 1;
     font-size: 2em;
-    /* border-width: 1px;
-    border-style: solid; */
     margin: auto auto auto 15px;
   }
 
   .streamer_logo
   {
-    grid-column: 3 / span 2;
-    grid-row: 2 / span 2;
+    grid-column: 4 / span 1;
+    grid-row: 1 / span 2;
     border-radius: 50%;
     border-style: solid;
     margin: auto;
@@ -61,29 +79,24 @@ body
 
   .streamer_title
   {
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 4;
     grid-row: 3;
-    /* border-style: solid; */
-    /* max-width: 400px;*/
     margin: auto auto auto 15px;
+    text-align: center;
   }
 
   .streamer_game
   {
     grid-column: 1 / span 2;
     grid-row: 2;
-    /* border-width: 1px;
-    border-style: solid; */
     margin: auto;
     text-align: center;
   }
 
   .streamer_views
   {
-    grid-column: 4 / span 1;
-    grid-row: 1;
-    /* border-width: 1px; */
-    /* border-style: solid; */
+    grid-column: 3 / span 1;
+    grid-row: 2;
     margin: auto auto auto auto;
   }
 
@@ -92,7 +105,6 @@ body
     grid-column: 1 / span 4;
     grid-row: 4;
     border-width: 1px;
-    /* border-style: solid; */
     margin: 10px 10px 10px 10px;
     text-align:center;
   }
@@ -101,8 +113,6 @@ body
   {
     grid-column: 1 / span 4;
     grid-row: 5;
-    /* border-width: 1px; */
-    /* border-style: solid; */
     margin: auto;
   }
 
@@ -116,12 +126,52 @@ body
   {
     display:grid;
     grid-template-columns: 1fr;
+    margin:auto;
   }
 
 }
 
 @media screen and (min-width: 1250px)
 {
+
+  .speacialCard
+  {
+    max-width: 900px;
+    min-width: 500px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+ #specialAnnouncementContainer
+  {
+    display:grid;
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+
+  .specialDescription
+  {
+    display:grid;
+    grid-column: 1 /span 2;
+    margin: 10px 10px auto 10px;
+    text-align: center;
+  }
+
+  .specialLinkName
+  {
+    display:grid;
+    grid-column: 1/ span 2;
+    margin: auto;
+
+  }
+
+
+
   .streamerCard
   {
     max-width: 900px;
@@ -207,14 +257,11 @@ body
   {
     display:grid;
     grid-template-columns: 1fr 1fr;
+    margin:auto;
   }
 }
 
-#update
-{
-  display:grid;
-  grid-template-columns: 1;
-}
+
 
 .user_image
 {
@@ -227,25 +274,7 @@ hr
 {
   width: 70%;
 }
-#header
-{
-  margin: 0px;
-  padding: 0px;
-  display:grid;
-  grid-template-columns: 1fr 5fr;
-  background-color: #333;
-}
-#banner
-{
-}
 
-#pageHeader
-{
-  font-size: 6em;
-  color: rgb(200, 120, 25);
-  text-shadow: 3px 3px black;
-  margin: auto;
-}
 .streamerHeader
 {
   margin-top: 15px;
@@ -282,18 +311,11 @@ hr
   border: 3px solid black;
 }
 
-#footer
-{
-  background-color: #333;
-  margin-top: 20px;
-  height: 25%;
-}
-
-
 
 .streamerCardOffline
 {
-  width: 500px;
+  min-width: 500px;
+  max-width: 900px;
   display: grid;
   margin-left: auto;
   margin-right: auto;
@@ -311,8 +333,6 @@ hr
 {
   grid-column: 1/ span 2;
   grid-row: 3;
-  /* border-width: 1px;
-  border-style: solid; */
 }
 .streamer_description_offline
 {
@@ -320,16 +340,12 @@ hr
   grid-row: 2;
   margin: 10px;
   word-wrap: break-word;
-  /* border-width: 1px;
-  border-style: solid; */
 }
 .streamer_logo_offline
 {
   grid-column: 3 ;
   grid-row: 1 / span 3;
   margin: auto 10px auto 10px;
-  /* border-width: 1px;
-  border-style: solid; */
 }
 .streamer_name_offline
 {
@@ -337,9 +353,7 @@ hr
   grid-row: 1;
   font-size: 2em;
   margin: 10px 10px auto 10px;
-
-  /* border-width: 1px;
-  border-style: solid; */
+  text-align: center;
 }
 
 .streamer_offline_message

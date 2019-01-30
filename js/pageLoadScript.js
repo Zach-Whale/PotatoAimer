@@ -3,6 +3,48 @@
 var onlineStreamer = new Array();
 var offlineStreamer = new Array();
 var onlineStreamerTwitchEmbed = new Array();
+var onlineStreamerCheckbox = new Array();
+var multiStreamLink = "https://multistre.am/";
+
+
+function speacialCard()
+{
+  $.ajax({
+    type: "GET",
+    url: "pages/special.txt",
+    success: displaySpecialCard,
+    error: function(jqXHR, textStatus, error)
+    {
+      console.log(error);
+    }
+  })
+}
+
+function displaySpecialCard(incomingData)
+{
+  var data = JSON.parse(incomingData);
+  if(data.length == 0)
+  {
+    loopStreamers();
+  }else {
+    for(i in data)
+    {
+    $("#specialAnnouncementHeader").append("Special Announcement");
+    $("#specialAnnouncementCenter").append(`
+      <div class="speacialCard" id="${data[i].username}">
+      <div class="specialDescription">${data[i].description}</div>
+      <div class="specialLinkName">
+        <a href="${data[i].link}">
+          ${data[i].link_description}
+        </a>
+      </div>
+
+      </div>
+      `);
+    }
+      loopStreamers();
+  }
+}
 
 function loopStreamers()
 {
@@ -264,18 +306,33 @@ function searchBarUpdate()
 
   }
 
+  function updateMultiLink()
+  {
+    multiStreamLink = "https://multistre.am/";
+    $(".multiLinkCheckBoxClass").each(function()
+    {
+      if($(this).prop("checked"))
+      {
+        var str = $(this).attr('id');
+        str = str.substring(str.indexOf("-") + 1);
+        multiStreamLink += str + "/";
+      }
+        $("#multiStreamLinkURL").attr("href", multiStreamLink);
+    });
+  }
 
-$(document).ready(loopStreamers);
+
+
 
 $(document).ajaxStop(function()
 {
   offlineStreamer.sort(function(a, b)
   {
-    if(a.channelData.display_name < b.channelData.display_name)
+    if(a.channelData.display_name.toLowerCase() < b.channelData.display_name.toLowerCase())
     {
       return -1;
     }
-    if(a.channelData.display_name > b.channelData.display_name)
+    if(a.channelData.display_name.toLowerCase() > b.channelData.display_name.toLowerCase())
     {
       return 1;
     }
@@ -315,7 +372,16 @@ if(onlineStreamer.length == 0)
     player.setVolume(0);
     onlineStreamerTwitchEmbed.push(player);
     //console.log(onlineStreamer[i].streamData.viewers)
+
+    $(".optionMenuSpan").append(
+      `<div class="optionMenuTitle" id='multiLink-${onlineStreamer[i].channelData.display_name}'>${onlineStreamer[i].channelData.display_name} - ${onlineStreamer[i].streamData.game}</div>
+      <div class="optionMenuSetting" id="multiLinkCheckboxDiv-${onlineStreamer[i].channelData.display_name}"><input type="checkbox" class="multiLinkCheckBoxClass" id="multiLinkCheckbox-${onlineStreamer[i].channelData.display_name}"></div>`
+    );
+
   }
+
+
+      $("#multiStreamLinkURL").attr("href", multiStreamLink);
 }
 if(offlineStreamerHeader.length == 0)
 {
@@ -332,11 +398,13 @@ if(offlineStreamerHeader.length == 0)
 
 $(document).ready(function() {
 
-
+  speacialCard();
 
   cookieLoad()
 
   $("#refreshToggle").change(cookieSwap);
+
+
 
   $("#offlineStreamerSearch").on("input", searchBarUpdate);
   $("#optionsButton").click(openPanel);
@@ -346,6 +414,17 @@ $(document).ready(function() {
   }, 600000);
 
 
+
+  // $("#multiLinkCheckbox-Kellummaul").change(function(){
+  //   alert("here");
+  // });
+
+
+});
+
+$(document).on('change', '.multiLinkCheckBoxClass', function()
+{
+  updateMultiLink();
 });
 
 

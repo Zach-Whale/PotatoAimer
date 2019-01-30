@@ -1,0 +1,48 @@
+#contentContainer
+{
+    display:grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    height: 800px;
+}
+
+#contentCenter
+{
+
+}
+
+#about_container
+{
+  background-color: white;
+  border-radius: 20px;
+  padding:15px;
+
+}
+
+#about_communityDescription
+{
+
+}
+
+#about_communityDescriptionHeader
+{
+  font-size: 1.5em;
+}
+
+#socialMediaContainer
+{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#discord
+{
+  background-color: white;
+  text-align: center;
+  border-radius: 25px;
+  width: 75%;
+}
+
+#discord img
+{
+  height: 80px;
+}

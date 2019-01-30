@@ -1,26 +1,66 @@
-#navigationBar
+
+html
 {
+  background-color: rgb(200 120 25);
+  font-family: Helvetica;
+  margin: 0;
+  padding: 0;
+}
+body
+{
+  margin: 0;
+  padding: 0;
+}
+
+#header
+{
+  margin: 0px;
+  padding: 0px;
+  display:grid;
+  grid-template-columns: 1fr 5fr;
+  background-color: #333;
+}
+
+
+#navigationBarContainer
+{
+  display:grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  margin-bottom: 25px;
   visibility: hidden;
 }
-#navigationBar ul
+#navigationBarLeft
+{
+  background-color: #333;
+}
+#navigationBarCenter
+{
+  background-color: #333;
+}
+
+#navigationBarRight
+{
+  background-color: #333;
+}
+#navigationBarCenter ul
 {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
 }
-#navigationBar li
+#navigationBarCenter li
 {
   float: left;
   border-right: 1px solid #bbb;
+  border-left: 1px solid #bbb;
 }
-#navigationBar li:last-child
+#navigationBarCenter li:last-child
 {
   float: right;
 }
 
-#navigationBar li a
+#navigationBarCenter li a
 {
   display: block;
   width: 60px;
@@ -30,7 +70,7 @@
   text-decoration: none;
 }
 
-#navigationBar li a:hover
+#navigationBarCenter li a:hover
 {
   background-color: #111;
 }
@@ -39,6 +79,9 @@
 {
   height: 40px;
   background-color: #333;
+  position: fixed;
+  width: 100%;
+  padding-bottom: 5px;
 
   padding-left:8px
 }
@@ -48,6 +91,29 @@
   cursor:pointer;
   width:auto;
 }
+
+
+#banner
+{
+}
+
+#pageHeader
+{
+  font-size: 6em;
+  color: rgb(200, 120, 25);
+  text-shadow: 3px 3px black;
+  margin: auto;
+}
+
+
+#footer
+{
+  background-color: #333;
+  margin-top: 20px;
+  height: 25%;
+}
+
+
 
 .overlay
 {
@@ -81,9 +147,16 @@
   grid-column:3;
 }
 
+.optionMenuSpan
+{
+  grid-template-columns: 1fr 1fr;
+  grid-column: 2 / span 2;
+}
+
 #adminConsole:hover
 {
   background-color:#EEE;
+  cursor: pointer;
 }
 
 #closeOverlayButton
