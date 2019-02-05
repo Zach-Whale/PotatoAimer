@@ -68,6 +68,16 @@
     margin: auto auto auto 15px;
   }
 
+  .streamer_name_founder
+  {
+
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    font-size: 2em;
+    margin: 10px 10px auto 10px;
+    color: red;
+  }
+
   .streamer_logo
   {
     grid-column: 4 / span 1;
@@ -129,6 +139,16 @@
     margin:auto;
   }
 
+    #logoContainer
+    {
+      display: grid;
+      grid-template-columns: 1fr 4fr 1fr;
+    }
+
+    #logoCenter
+    {
+      text-align: center;
+    }
 }
 
 @media screen and (min-width: 1250px)
@@ -194,6 +214,17 @@
     border-style: solid; */
     margin: 10px 10px auto 10px;
   }
+
+  .streamer_name_founder
+  {
+
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    font-size: 2em;
+    margin: 10px 10px auto 10px;
+    color: red;
+  }
+
   .streamer_logo
   {
     grid-column: 4 / span 2;
@@ -259,6 +290,18 @@
     grid-template-columns: 1fr 1fr;
     margin:auto;
   }
+
+
+  #logoContainer
+  {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+
+  #logoCenter
+  {
+    text-align: center;
+  }
 }
 
 
@@ -311,6 +354,12 @@ hr
   border: 3px solid black;
 }
 
+#potatoCount
+{
+  font-size: 2em;
+  text-shadow: 1px 1px white;
+}
+
 
 .streamerCardOffline
 {
@@ -354,6 +403,15 @@ hr
   font-size: 2em;
   margin: 10px 10px auto 10px;
   text-align: center;
+}
+.streamer_name_offline_founder
+{
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  font-size: 2em;
+  margin: 10px 10px auto 10px;
+  text-align: center;
+  color:red;
 }
 
 .streamer_offline_message

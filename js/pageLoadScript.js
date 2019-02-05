@@ -5,6 +5,7 @@ var offlineStreamer = new Array();
 var onlineStreamerTwitchEmbed = new Array();
 var onlineStreamerCheckbox = new Array();
 var multiStreamLink = "https://multistre.am/";
+var multiLinkArray = new Array();
 
 
 function speacialCard()
@@ -26,10 +27,17 @@ function displaySpecialCard(incomingData)
   if(data.length == 0)
   {
     loopStreamers();
-  }else {
+  }else{
+    if(data.length == 1)
+    {
+      $("#specialAnnouncementHeader").append("Special Announcement")
+    } else
+    {
+      $("#specialAnnouncementHeader").append("Special Announcements");
+    }
     for(i in data)
     {
-    $("#specialAnnouncementHeader").append("Special Announcement");
+
     $("#specialAnnouncementCenter").append(`
       <div class="speacialCard" id="${data[i].username}">
       <div class="specialDescription">${data[i].description}</div>
@@ -62,8 +70,10 @@ function getStreamerChannel(incomingData)
 {
   var streamerNames = new Array();
 
+
   streamerNames = incomingData.split("\n");
 
+  $('#potatoCount').append(`${streamerNames.length}`);
 
   streamerNames.map(streamerNames => {
     const twitchChannel =  'https://api.twitch.tv/kraken/channels/' + streamerNames,
@@ -194,8 +204,25 @@ function printDataUserOnline(activeStreamer)
     userBio = userObject.bio;
   }
 
+if(channelObject.display_name == "Kellummaul" ||
+   channelObject.display_name == "Beldarean1" ||
+   channelObject.display_name == "DaddyCroon" ||
+   channelObject.display_name == "Drac346")
+   {
 
-
+  $('#streamerOnline').append(
+    `<div id="${channelObject.display_name.toLowerCase()}" class="streamerCard">
+    <div class="streamer_name_founder"><b>${channelObject.display_name}</b></div>
+    <div class="streamer_logo"><a href=${channelObject.url} target="_blank"><img class="user_image" src=${channelObject.logo}></img></a></div>
+    <div class="streamer_views"><img src="content/viewers.png" id="viewers"> ${streamObject.viewers}</img></div>
+    <div class="streamer_game">${streamObject.game}</div>
+    <div class="streamer_title">${channelObject.status}.</div>
+    <div class="streamer_description">${userBio}</div>
+    <div class="streamer_embed"><div id="${channelObject.display_name}embedID"></div>
+    </div>`
+    //<a href=${channelObject.url} target="_blank"><img src=${streamObject.preview.medium}></img></a></div>
+  );
+}else {
   $('#streamerOnline').append(
     `<div id="${channelObject.display_name.toLowerCase()}" class="streamerCard">
     <div class="streamer_name"><b>${channelObject.display_name}</b></div>
@@ -208,6 +235,7 @@ function printDataUserOnline(activeStreamer)
     </div>`
     //<a href=${channelObject.url} target="_blank"><img src=${streamObject.preview.medium}></img></a></div>
   );
+}
 
 
 
@@ -227,7 +255,20 @@ function printDataUserOffline(nonActiveStreamer)
   }else{
     userBio = userObject.bio;
   }
-
+  if(channelObject.display_name == "Kellummaul" ||
+     channelObject.display_name == "Beldarean1" ||
+     channelObject.display_name == "DaddyCroon" ||
+     channelObject.display_name == "Drac346")
+     {
+  $('#streamerOffline').append(
+    `<div id="${channelObject.display_name.toLowerCase()}" class="streamerCardOffline">
+    <div class="streamer_name_offline_founder"><b>${channelObject.display_name}</b></div>
+    <div class="streamer_logo_offline"><a href=${channelObject.url} target="_blank"><img class="user_image" src=${channelObject.logo}></img></a></div>
+    <div class="streamer_description_offline">${userBio}</div>
+    <div class="streamer_offline_message">${channelObject.display_name} is Offline!</div>
+    </div>`
+  );
+}else {
   $('#streamerOffline').append(
     `<div id="${channelObject.display_name.toLowerCase()}" class="streamerCardOffline">
     <div class="streamer_name_offline"><b>${channelObject.display_name}</b></div>
@@ -236,6 +277,7 @@ function printDataUserOffline(nonActiveStreamer)
     <div class="streamer_offline_message">${channelObject.display_name} is Offline!</div>
     </div>`
   );
+}
 }
 
 function searchBarUpdate()
@@ -309,16 +351,14 @@ function searchBarUpdate()
   function updateMultiLink()
   {
     multiStreamLink = "https://multistre.am/";
-    $(".multiLinkCheckBoxClass").each(function()
+
+    for( i in multiLinkArray)
     {
-      if($(this).prop("checked"))
-      {
-        var str = $(this).attr('id');
-        str = str.substring(str.indexOf("-") + 1);
-        multiStreamLink += str + "/";
-      }
+      multiStreamLink += multiLinkArray[i] + "/";
+    }
+
         $("#multiStreamLinkURL").attr("href", multiStreamLink);
-    });
+
   }
 
 
@@ -373,9 +413,9 @@ if(onlineStreamer.length == 0)
     onlineStreamerTwitchEmbed.push(player);
     //console.log(onlineStreamer[i].streamData.viewers)
 
-    $(".optionMenuSpan").append(
-      `<div class="optionMenuTitle" id='multiLink-${onlineStreamer[i].channelData.display_name}'>${onlineStreamer[i].channelData.display_name} - ${onlineStreamer[i].streamData.game}</div>
-      <div class="optionMenuSetting" id="multiLinkCheckboxDiv-${onlineStreamer[i].channelData.display_name}"><input type="checkbox" class="multiLinkCheckBoxClass" id="multiLinkCheckbox-${onlineStreamer[i].channelData.display_name}"></div>`
+    $("#multiLinkOptions").append(
+      `<div class="optionMenuTitle" stream='${onlineStreamer[i].channelData.display_name}' id='multiLink-${onlineStreamer[i].channelData.display_name}'>${onlineStreamer[i].channelData.display_name} - ${onlineStreamer[i].streamData.game}</div>`
+      //<div class="optionMenuSetting" id="multiLinkCheckboxDiv-${onlineStreamer[i].channelData.display_name}"><input type="checkbox" class="multiLinkCheckBoxClass" id="multiLinkCheckbox-${onlineStreamer[i].channelData.display_name}"></div>`
     );
 
   }
@@ -411,21 +451,38 @@ $(document).ready(function() {
   $("#closeOverlayButton").click(closePanel);
   setInterval(function() {
     refresh()
-  }, 600000);
+  }, 12000);//600000);
+
+
+  $(document).on("click", ".optionMenuTitle", function()
+  {
+    if(multiLinkArray.indexOf($(this).attr("stream")) == -1)
+    {
+      if($(this).attr("id") != "refreshOptionTitle")
+      {
+      multiLinkArray.push($(this).attr("stream"));
+      //console.log(multiLinkArray.indexOf($(this).attr("stream")));
+        $(this).css("border-color","white");
+      }
+    }else {
+      if($(this).attr("id") != "refreshOptionTitle")
+      {
+      targetToRemove = $(this).attr("stream");
+      multiLinkArray.splice($.inArray(targetToRemove, multiLinkArray), 1);
+
+      //console.log(multiLinkArray.indexOf($(this).attr("stream")));
+        $(this).css("border-color","black");
+      }
+    }
 
 
 
-  // $("#multiLinkCheckbox-Kellummaul").change(function(){
-  //   alert("here");
-  // });
+
+
+    updateMultiLink();
+  });
+
 
 
 });
-
-$(document).on('change', '.multiLinkCheckBoxClass', function()
-{
-  updateMultiLink();
-});
-
-
 
