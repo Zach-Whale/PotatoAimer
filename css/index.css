@@ -5,7 +5,29 @@
   grid-template-columns: 1fr 4fr 1fr
 }
 
-@media screen and (max-width: 1249px)
+
+#optionsPane
+{
+  height: 40px;
+  background-color: #333;
+  position: fixed;
+  width: 100%;
+  padding-bottom: 5px;
+  padding-left:8px
+}
+#optionsButton
+{
+  font-size:30px;
+  cursor:pointer;
+  width:auto;
+  color:white;
+
+  border: 1px white;
+  border-style: solid;
+}
+
+
+@media screen and (max-width: 1000px)
 {
 
   .speacialCard
@@ -18,7 +40,181 @@
     margin-top: 20px;
     background-color: white;
     border-radius: 10px;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .speacialCard_noLink
+  {
+    max-width: 900px;
+    min-width: 500px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    border-radius: 10px;
+    grid-template-columns: 1fr 1fr;
+
+  }
+
+ #specialAnnouncementContainer
+  {
+    display:grid;
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+
+  .specialDescription
+  {
+    display:grid;
+    grid-column: 1 /span 2;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+  }
+
+  .specialLinkName
+  {
+    display:grid;
+    grid-column: 1 / span 2;;
+    margin: auto;
+  }
+
+
+  .streamerCard
+  {
+    max-width: 900px;
+    min-width: 500px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    grid-template-rows: 1fr 1fr 2fr 2fr 4fr;
+    //use 1 1 2 2 4 for mobile
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 10px;
+  }
+
+  .streamer_name
+  {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    font-size: 2em;
+    margin: auto auto auto 15px;
+  }
+
+  .streamer_name_founder
+  {
+
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    font-size: 2em;
+    margin: 10px 10px auto 10px;
+    color: red;
+  }
+
+  .streamer_logo
+  {
+    grid-column: 4 / span 1;
+    grid-row: 1 / span 2;
+    border-radius: 50%;
+    border-style: solid;
+    margin: auto;
+  }
+
+  .streamer_title
+  {
+    grid-column: 1 / span 4;
+    grid-row: 3;
+    margin: auto auto auto 15px;
+    text-align: center;
+  }
+
+  .streamer_game
+  {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    margin: auto;
+    text-align: center;
+  }
+
+  .streamer_views
+  {
+    grid-column: 3 / span 1;
+    grid-row: 2;
+    margin: auto auto auto auto;
+  }
+
+  .streamer_description
+  {
+    grid-column: 1 / span 4;
+    grid-row: 4;
+    border-width: 1px;
+    margin: 10px 10px 10px 10px;
+    text-align:center;
+  }
+
+  .streamer_embed
+  {
+    grid-column: 1 / span 4;
+    grid-row: 5;
+    margin: auto;
+  }
+
+
+  #offlineStreamerContainer
+  {
+    display:grid;
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+  #streamerOffline
+  {
+    display:grid;
+    grid-template-columns: 1fr;
+    margin:auto;
+  }
+
+    #logoContainer
+    {
+      display: grid;
+      grid-template-columns: 1fr 4fr 1fr;
+    }
+
+    #logoCenter
+    {
+      text-align: center;
+    }
+}
+
+@media screen and (max-width: 1250px) and (min-width: 1000px)
+{
+
+  .speacialCard
+  {
+    max-width: 900px;
+    min-width: 500px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    grid-template-rows: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .speacialCard_noLink
+  {
+    max-width: 900px;
+    min-width: 500px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
     grid-template-columns: 1fr 1fr;
   }
 
@@ -32,7 +228,7 @@
   {
     display:grid;
     grid-column: 1 /span 2;
-    margin: 10px 10px auto 10px;
+    margin: 10px 10px 10px 10px;
     text-align: center;
   }
 
@@ -164,7 +360,19 @@
     margin-top: 20px;
     background-color: white;
     border-radius: 10px;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  .speacialCard_noLink
+  {
+    max-width: 900px;
+    min-width: 500px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
     grid-template-columns: 1fr 1fr;
   }
 
@@ -178,7 +386,7 @@
   {
     display:grid;
     grid-column: 1 /span 2;
-    margin: 10px 10px auto 10px;
+    margin: 10px 10px 10px 10px;
     text-align: center;
   }
 

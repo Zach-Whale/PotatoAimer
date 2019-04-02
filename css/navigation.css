@@ -5,6 +5,7 @@ html
   font-family: Helvetica;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 body
 {
@@ -27,7 +28,6 @@ body
   display:grid;
   grid-template-columns: 1fr 4fr 1fr;
   margin-bottom: 25px;
-  visibility: hidden;
 }
 #navigationBarLeft
 {
@@ -70,26 +70,6 @@ body
 #navigationBarCenter li a:hover
 {
   background-color: #111;
-}
-
-#optionsPane
-{
-  height: 40px;
-  background-color: #333;
-  position: fixed;
-  width: 100%;
-  padding-bottom: 5px;
-  padding-left:8px
-}
-#optionsButton
-{
-  font-size:30px;
-  cursor:pointer;
-  width:auto;
-  color:white;
-
-  border: 1px white;
-  border-style: solid;
 }
 
 #banner
@@ -161,6 +141,7 @@ body
 #multiStreamLinkURL
 {
   grid-column: 2/ span 2;
+  //visibility: hidden;
 }
 #multiLinkBox
 {
