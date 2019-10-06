@@ -3,6 +3,7 @@
   "username":"upcoming_events",
   "description":"Check back soon for upcoming events!",
   "link_description":"",
-  "link":""
+  "link":"",
+  "img":"20190706_Charity_Stream.png"
 }
 ]
