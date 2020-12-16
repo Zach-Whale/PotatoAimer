@@ -1,9 +1,9 @@
 [
 {
-  "username":"upcoming_events",
-  "description":"Check back soon for upcoming events!",
-  "link_description":"",
-  "link":"",
-  "img":"20190706_Charity_Stream.png"
+  "username":"Sub_To_PAS",
+  "description":"Be sure to Follow the PotatoAimersSquad Twitch channel for streams, and Potato Action News every other Sunday! Featuring Baconlegs and Blustar giving all the latest happenings in the community. If you have news to report or need more info ask in the discord!",
+  "link_description":"PotatoAimerSquad Twitch Channel",
+  "link":"https://www.twitch.tv/potatoaimerssquad/",
+  "img":""
 }
 ]
