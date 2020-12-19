@@ -315,7 +315,7 @@ function displaySpecialCard(incomingData)
         $('#streamerOnline').append(
           `<div id="${userObject.display_name.toLowerCase()}" class="streamerCard">
           <div class="streamer_name_founder"><b>${userObject.display_name}</b></div>
-          <div class="streamer_logo"><a href="https://www.twitch.tv/${userObject.display_name}" target="_blank"><img class="user_image" src=${userObject.profile_image_url}></img></a></div>
+          <div class="streamer_logo"><a href="https://www.twitch.tv/${userObject.display_name}" target="_blank"><img src="../content/christmas.png" style="position: absolute; z-index: 2; height: 50px; transform: rotate(-20deg) translateY(-30px) translateX(5px)"><img class="user_image" src=${userObject.profile_image_url}></img></a></div>
           <div class="streamer_views"><img src="content/viewers.png" id="viewers"> ${streamObject.viewer_count}</img></div>
           <div class="streamer_game">${streamObject.game_id}</div>
           <div class="streamer_title">${streamObject.title}.</div>
@@ -331,7 +331,7 @@ function displaySpecialCard(incomingData)
         $('#passtreamerOnline').append(
           `<div id="${userObject.display_name.toLowerCase()}" class="streamerCard">
           <div class="streamer_name_pas"><b>${userObject.display_name}</b></div>
-          <div class="streamer_logo"><a href="https://www.twitch.tv/${userObject.display_name}" target="_blank"><img class="user_image" src=${userObject.profile_image_url}></img></a></div>
+          <div class="streamer_logo"><a href="https://www.twitch.tv/${userObject.display_name}" target="_blank"><img src="../content/christmas.png" style="position: absolute; z-index: 2; height: 50px; transform: rotate(-20deg) translateY(-30px) translateX(5px)"><img class="user_image" src=${userObject.profile_image_url}></img></a></div>
           <div class="streamer_views"><img src="content/viewers.png" id="viewers"> ${streamObject.viewer_count}</img></div>
           <div class="streamer_game">${streamObject.game_id}</div>
           <div class="streamer_title">${streamObject.title}.</div>
@@ -344,7 +344,7 @@ function displaySpecialCard(incomingData)
         $('#streamerOnline').append(
           `<div id="${userObject.display_name.toLowerCase()}" class="streamerCard">
           <div class="streamer_name"><b>${userObject.display_name}</b></div>
-          <div class="streamer_logo"><a href="https://www.twitch.tv/${userObject.display_name}" target="_blank"><img class="user_image" src=${userObject.profile_image_url}></img></a></div>
+          <div class="streamer_logo"><a href="https://www.twitch.tv/${userObject.display_name}" target="_blank"><img src="../content/christmas.png" style="position: absolute; z-index: 2; height: 50px; transform: rotate(-20deg) translateY(-30px) translateX(5px)"><img class="user_image" src=${userObject.profile_image_url}></img></a></div>
           <div class="streamer_views"><img src="content/viewers.png" id="viewers"> ${streamObject.viewer_count}</img></div>
           <div class="streamer_game">${streamObject.game_id}</div>
           <div class="streamer_title">${streamObject.title}.</div>
@@ -380,7 +380,7 @@ function displaySpecialCard(incomingData)
         $('#streamerOffline').append(
           `<div id="${userObject.display_name.toLowerCase()}" class="streamerCardOffline">
           <div class="streamer_name_offline_founder"><b>${userObject.display_name}</b></div>
-          <div class="streamer_logo_offline"><a href="https://www.twitch.tv/${userObject.display_name}" target="_blank"><img class="user_image" src=${userObject.profile_image_url}></img></a></div>
+          <div class="streamer_logo_offline"><a href="https://www.twitch.tv/${userObject.display_name}" target="_blank"><img src="../content/christmas.png" style="position: absolute; z-index: 2; height: 50px; transform: rotate(-20deg) translateY(-30px) translateX(5px)"><img class="user_image" src=${userObject.profile_image_url}></img></a></div>
           <div class="streamer_description_offline">${userBio}</div>
           <div class="streamer_offline_message">${userObject.display_name} is Offline!</div>
           </div>`
@@ -389,7 +389,7 @@ function displaySpecialCard(incomingData)
         $('#streamerOffline').append(
           `<div id="${userObject.display_name.toLowerCase()}" class="streamerCardOffline">
           <div class="streamer_name_offline"><b>${userObject.display_name}</b></div>
-          <div class="streamer_logo_offline"><a href="https://www.twitch.tv/${userObject.display_name}" target="_blank"><img class="user_image" src=${userObject.profile_image_url}></img></a></div>
+          <div class="streamer_logo_offline"><a href="https://www.twitch.tv/${userObject.display_name}" target="_blank"><img src="../content/christmas.png" style="position: absolute; z-index: 2; height: 50px; transform: rotate(-20deg) translateY(-30px) translateX(5px)"><img class="user_image" src=${userObject.profile_image_url}></img></a></div>
           <div class="streamer_description_offline">${userBio}</div>
           <div class="streamer_offline_message">${userObject.display_name} is Offline!</div>
           </div>`
